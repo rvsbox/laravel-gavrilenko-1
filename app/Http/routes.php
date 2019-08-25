@@ -67,14 +67,27 @@ Route::get('/', function () {
 
 // несколько глобальных условий
 // 08--17:20 Запуск largav1.loc/page/abc/200
-Route::get('/page/{cat}/{id}', function ($var1) {
+/*Route::get('/page/{cat}/{id}', function ($var1) {
     echo $var1;
-});
+});*/
 
 
 // группировка роутеров
 // 08--18:25 Запуск largav1.loc/page/create, largav1.loc/page/edit
-Route::group([], function (){
+/*Route::group([], function (){
+    Route::get('page/create', function () {
+        echo 'page/create';
+    });
+
+    Route::get('page/edit', function () {
+        echo 'page/edit';
+    });
+});*/
+
+
+// определение псевдонима для группы роутеров
+// 08--22:06 Запуск largav1.loc/admin/page/create, largav1.loc/admin/page/edit
+Route::group(['prefix'=>'admin'], function (){
     Route::get('page/create', function () {
         echo 'page/create';
     });
