@@ -25,7 +25,12 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         //
-        $router->pattern('id','[0-9]+'); // одно глобальное условие для роутеров
+        //$router->pattern('id','[0-9]+'); // одно глобальное условие для роутеров
+
+
+        $router->patterns(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']); // несколько глобальных условий
+
+
         parent::boot($router);
     }
 

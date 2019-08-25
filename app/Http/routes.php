@@ -57,75 +57,17 @@ Route::get('/', function () {
 })->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']); // значение id должно удовлетворять это условие*/
 
 
-// глобальные условия для всех роутеров, которые определяются во фреймворке.
+// глобальное условие для всех роутеров, которое определяется во фреймворке.
 // Глобальные условия прописываются /app/Providers/RouterServiceProvider.php
 // 08--15:30 Запуск largav1.loc/page/abc/200
+/*Route::get('/page/{cat}/{id}', function ($var1) {
+    echo $var1;
+});*/
+
+
+// несколько глобальных условий
+// 08--17:20 Запуск largav1.loc/page/abc/200
 Route::get('/page/{cat}/{id}', function ($var1) {
     echo $var1;
 });
 
-
-
-
-
-//Route::get('/page/{cat}/{id}',function($var1) {
-//
-//    echo '<pre>';
-//
-//    echo $var1;
-//    //print_r($_ENV);
-//    //echo config('app.locale');
-//    //echo Config::set('app.locale','ru');
-//    //echo Config::get('app.locale');
-//    ///echo env('APP_ENV');
-//
-//    echo '</pre>';
-//
-//})/*->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+'])*/;
-
-/*Route::post('/comments',function () {
-
-print_r($_POST);
-
-});*/
-
-/*
-Route::match(['get','post'],'/comments',function () {
-
-print_r($_POST);
-
-});*/
-
-/*Route::any('/comments',function () {
-
-print_r($_POST);
-
-});*/
-
-/*Route::post('/comments',function () {
-
-    print_r($_POST);
-
-});*/
-
-
-/*Route::group(['prefix'=>'admin/{id}'],function() {
-
-
-    Route::get('page/create/{var}',function($id) {
-
-        $route = Route::current();
-
-        //echo $route->getName();
-        //echo $route->getParameter('var',24);
-        print_r($route->parameters());
-
-        //return redirect()->route('article',array('id'=>25));
-    })->name('createpage');
-
-    Route::get('page/edit',function() {
-        echo 'page/edit';
-    });
-
-
-});*/
