@@ -15,5 +15,5 @@ Route::get('/', ['as' => 'home', function () {
     return view('welcome');
 }]);
 
-// largav1.loc/about
-Route::get('/about','FirstController@show'); // @ - разделитель, show - метод контроллера
+// largav1.loc/about/10
+Route::get('/about/{id}','FirstController@show'); // @ - разделитель, show - метод контроллера
