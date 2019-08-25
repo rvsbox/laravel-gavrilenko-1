@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'home', function () {
     return view('welcome');
-});
+}]);
 
 
 // 08--03:30 Запуск largav1.loc/article/10
@@ -100,7 +100,7 @@ Route::get('/', function () {
 
 // префикс, параметр
 // 08--22:06 Запуск largav1.loc/admin/20/page/create, largav1.loc/admin/100/page/edit
-Route::group(['prefix'=>'admin/{id}'], function (){
+/*Route::group(['prefix'=>'admin/{id}'], function (){
     Route::get('page/create', function () {
         echo 'page/create';
     });
@@ -108,6 +108,17 @@ Route::group(['prefix'=>'admin/{id}'], function (){
     Route::get('page/edit', function () {
         echo 'page/edit';
     });
+});*/
+
+
+// ссылка на главную страницу
+// 08--24:30 Запуск largav1.loc/admin/20/page/create, largav1.loc/admin/100/page/edit
+Route::group(['prefix'=>'admin/{id}'], function (){
+    Route::get('page/create', function () {
+        echo route('home');
+    });
+
+    Route::get('page/edit', function () {
+        echo 'page/edit';
+    });
 });
-
-
