@@ -87,7 +87,20 @@ Route::get('/', function () {
 
 // определение псевдонима для группы роутеров
 // 08--22:06 Запуск largav1.loc/admin/page/create, largav1.loc/admin/page/edit
-Route::group(['prefix'=>'admin'], function (){
+/*Route::group(['prefix'=>'admin'], function (){
+    Route::get('page/create', function () {
+        echo 'page/create';
+    });
+
+    Route::get('page/edit', function () {
+        echo 'page/edit';
+    });
+});*/
+
+
+// префикс, параметр
+// 08--22:06 Запуск largav1.loc/admin/20/page/create, largav1.loc/admin/100/page/edit
+Route::group(['prefix'=>'admin/{id}'], function (){
     Route::get('page/create', function () {
         echo 'page/create';
     });
@@ -96,7 +109,5 @@ Route::group(['prefix'=>'admin'], function (){
         echo 'page/edit';
     });
 });
-
-
 
 
