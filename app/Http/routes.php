@@ -16,6 +16,13 @@ Route::get('/', ['as' => 'home', function () {
 }]);
 
 
+// маршрут с параметром
+// 08--27:52
+Route::get('/article/{id}', ['as' => 'article', function ($id) {
+    echo $id;
+}]);
+
+
 // 08--03:30 Запуск largav1.loc/article/10
 /*Route::get('/article/{id}', function ($id) {
     echo $id;
@@ -113,12 +120,20 @@ Route::get('/', ['as' => 'home', function () {
 
 // ссылка на главную страницу
 // 08--24:30 Запуск largav1.loc/admin/20/page/create, largav1.loc/admin/100/page/edit
-Route::group(['prefix' => 'admin/{id}'], function () {
+/*Route::group(['prefix' => 'admin/{id}'], function () {
     Route::get('page/create', function () {
         return redirect()->route('home');
     });
 
     Route::get('page/edit', function () {
         return redirect()->route('home');
+    });
+});*/
+
+
+// Запуск largav1.loc/admin/20/page/create
+Route::group(['prefix' => 'admin/{id}'], function () {
+    Route::get('page/create', function () {
+        return redirect()->route('article', array('id'=>25));
     });
 });
