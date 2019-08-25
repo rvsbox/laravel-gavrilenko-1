@@ -1,0 +1,1 @@
+<?phpnamespace App\Http\Controllers;use App\Http\Controllers\Controller; // предоставлен доступ к функционалу родительского контроллераclass FirstController extends Controller {    public function show() {        echo __METHOD__; // отобразит название метода    }}?>
