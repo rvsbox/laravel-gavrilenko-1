@@ -52,9 +52,17 @@ Route::get('/', function () {
 
 // использование массива с условиями
 // 08--09:07 Запуск largav1.loc/page/abc/200
+/*Route::get('/page/{cat}/{id}', function ($var1) {
+    echo $var1;
+})->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']); // значение id должно удовлетворять это условие*/
+
+
+// глобальные условия для всех роутеров, которые определяются во фреймворке.
+// Глобальные условия прописываются /app/Providers/RouterServiceProvider.php
+// 08--15:30 Запуск largav1.loc/page/abc/200
 Route::get('/page/{cat}/{id}', function ($var1) {
     echo $var1;
-})->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']); // значение id должно удовлетворять это условие
+});
 
 
 
