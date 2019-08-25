@@ -16,38 +16,108 @@ Route::get('/', function () {
 });
 
 
-// запуск largav1.loc/page
-Route::get('/page', function () {
-    echo 'Hello';
-    return;
-});
-
-
-// запуск largav1.loc/temp
-Route::get('/temp', function () {
-    echo '<pre>';
-    //print_r($_ENV); // получить массив переменных окружения
-    //echo config('app.locale'); // получить информацию из config/app.php
-    //echo Config::set('app.locale', 'ru'); // установить значение, которое будет храниться в оперативной памяти, но в файл не перезаписывает
-    //echo Config::get('app.locale'); // использование фасада Config фреймворка
-    echo env('APP_ENV'); // доступ к переменным окружения
-    echo '</pre>';
-});
-
-
-// 22:00. Запуск largav1.loc/form.html
-/*Route::post('/comments', function () {
-    print_r($_POST); // 22 мин
+// 08--03:30 Запуск largav1.loc/article/10
+/*Route::get('/article/{id}', function ($id) {
+    echo $id;
 });*/
 
 
-// 24:00
+// необходимо соблюдать последовательность параметров
+// 08--04:30 Запуск largav1.loc/page/10/hello
+/*Route::get('/page/{id}/{cat}', function ($var1, $var2) {
+    echo $var1 . '|' . $var2;
+});*/
+
+
+// необязательный параметр
+// 08--07:00 Запуск largav1.loc/page/10
+/*Route::get('/page/{id?}', function ($var1 = null) {
+    echo $var1;
+});*/
+
+
+// использование значения (50) по умолчанию
+// 08--08:10 Запуск largav1.loc/page
+/*Route::get('/page/{id?}', function ($var1 = 50) {
+    echo $var1;
+});*/
+
+
+// использование условия
+// 08--09:07 Запуск largav1.loc/page/300
+/*Route::get('/page/{id}', function ($var1) {
+    echo $var1;
+})->where('id', '[0-9]+'); // значение id должно удовлетворять это условие*/
+
+
+// использование массива с условиями
+// 08--09:07 Запуск largav1.loc/page/abc/200
+Route::get('/page/{cat}/{id}', function ($var1) {
+    echo $var1;
+})->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+']); // значение id должно удовлетворять это условие
+
+
+
+
+
+//Route::get('/page/{cat}/{id}',function($var1) {
+//
+//    echo '<pre>';
+//
+//    echo $var1;
+//    //print_r($_ENV);
+//    //echo config('app.locale');
+//    //echo Config::set('app.locale','ru');
+//    //echo Config::get('app.locale');
+//    ///echo env('APP_ENV');
+//
+//    echo '</pre>';
+//
+//})/*->where(['id'=>'[0-9]+','cat'=>'[A-Za-z]+'])*/;
+
+/*Route::post('/comments',function () {
+
+print_r($_POST);
+
+});*/
+
+/*
 Route::match(['get','post'],'/comments',function () {
-    print_r($_POST);
-});
 
+print_r($_POST);
 
-// 25:40. Произвольные типы запроса
+});*/
+
 /*Route::any('/comments',function () {
+
+print_r($_POST);
+
+});*/
+
+/*Route::post('/comments',function () {
+
     print_r($_POST);
+
+});*/
+
+
+/*Route::group(['prefix'=>'admin/{id}'],function() {
+
+
+    Route::get('page/create/{var}',function($id) {
+
+        $route = Route::current();
+
+        //echo $route->getName();
+        //echo $route->getParameter('var',24);
+        print_r($route->parameters());
+
+        //return redirect()->route('article',array('id'=>25));
+    })->name('createpage');
+
+    Route::get('page/edit',function() {
+        echo 'page/edit';
+    });
+
+
 });*/
