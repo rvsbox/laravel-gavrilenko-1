@@ -113,12 +113,12 @@ Route::get('/', ['as' => 'home', function () {
 
 // ссылка на главную страницу
 // 08--24:30 Запуск largav1.loc/admin/20/page/create, largav1.loc/admin/100/page/edit
-Route::group(['prefix'=>'admin/{id}'], function (){
+Route::group(['prefix' => 'admin/{id}'], function () {
     Route::get('page/create', function () {
-        echo route('home');
+        return redirect()->route('home');
     });
 
     Route::get('page/edit', function () {
-        echo 'page/edit';
+        return redirect()->route('home');
     });
 });
