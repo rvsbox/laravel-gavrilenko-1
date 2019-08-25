@@ -18,9 +18,9 @@ Route::get('/', ['as' => 'home', function () {
 
 // маршрут с параметром
 // 08--27:52
-Route::get('/article/{id}', ['as' => 'article', function ($id) {
+/*Route::get('/article/{id}', ['as' => 'article', function ($id) {
     echo $id;
-}]);
+}]);*/
 
 
 // 08--03:30 Запуск largav1.loc/article/10
@@ -132,8 +132,22 @@ Route::get('/article/{id}', ['as' => 'article', function ($id) {
 
 
 // Запуск largav1.loc/admin/20/page/create
-Route::group(['prefix' => 'admin/{id}'], function () {
+/*Route::group(['prefix' => 'admin/{id}'], function () {
     Route::get('page/create', function () {
         return redirect()->route('article', array('id'=>25));
     });
+});*/
+
+
+// методы класса Route
+// 08--31:40 Запуск largav1.loc/admin/300/page/create/390
+Route::group(['prefix' => 'admin/{id}'], function () {
+    Route::get('page/create/{var}', function ($id) {
+
+        $route = Route::current(); // получить объект класса Route для текущего маршрута
+        //echo $route->getName();
+        //echo $route->getParameter('var', 390);
+        print_r($route->parameters());
+
+    })->name('createpage'); // второй способ определения имени роутера
 });
