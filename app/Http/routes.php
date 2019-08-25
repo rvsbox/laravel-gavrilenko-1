@@ -71,3 +71,19 @@ Route::get('/page/{cat}/{id}', function ($var1) {
     echo $var1;
 });
 
+
+// группировка роутеров
+// 08--18:25 Запуск largav1.loc/page/create, largav1.loc/page/edit
+Route::group([], function (){
+    Route::get('page/create', function () {
+        echo 'page/create';
+    });
+
+    Route::get('page/edit', function () {
+        echo 'page/edit';
+    });
+});
+
+
+
+
