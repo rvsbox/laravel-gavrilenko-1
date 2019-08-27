@@ -15,5 +15,13 @@ Route::get('/', ['as' => 'home', function () {
     return view('welcome');
 }]);
 
+
 // largav1.loc/about/10
 Route::get('/about/{id}','FirstController@show'); // @ - разделитель, show - метод контроллера
+
+
+Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
+
+Route::resource('/pages', 'Admin\CoreResource');
+
